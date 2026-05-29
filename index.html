@@ -370,10 +370,158 @@
       .hero h1 { font-size: 28px; }
       .heart-svg { width: 90px; height: 90px; }
       .traits-grid { grid-template-columns: 1fr; }
+      .type-grid { grid-template-columns: 1fr; }
+      .cause-grid { grid-template-columns: 1fr; }
+      .signs-grid { grid-template-columns: 1fr; }
       .section-title { font-size: 21px; }
       .love-letter { padding: 28px 20px; }
       .love-letter p { font-size: 14.5px; }
       .hero { padding: 40px 20px 36px; }
+    }
+
+    /* ── Type cards (3-column) ── */
+    .type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .type-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .type-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(232,130,130,0.12);
+    }
+    .type-card .type-icon { font-size: 36px; display: block; margin-bottom: 10px; }
+    .type-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--love-dark);
+      margin-bottom: 4px;
+    }
+    .type-card .type-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .type-card p {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    /* ── Cause info ── */
+    .cause-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .cause-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 22px 20px;
+      text-align: center;
+    }
+    .cause-item .cause-icon { font-size: 30px; display: block; margin-bottom: 8px; }
+    .cause-item h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--love-dark);
+      margin-bottom: 6px;
+    }
+    .cause-item p {
+      font-size: 13.5px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+    .cause-not {
+      margin-top: 20px;
+      background: linear-gradient(135deg, #fdf5f0, #fce4e4);
+      border-radius: var(--radius-sm);
+      padding: 18px 22px;
+    }
+    .cause-not p {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+    .cause-not strong { color: var(--love-dark); }
+
+    /* ── Adult signs ── */
+    .signs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .sign-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      transition: var(--transition);
+    }
+    .sign-card:hover {
+      border-color: var(--love-light);
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+    .sign-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--love-dark);
+      margin-bottom: 5px;
+    }
+    .sign-card p {
+      font-size: 13.5px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    /* ── Next steps ── */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .step-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--card);
+      border-radius: var(--radius-sm);
+      padding: 18px 22px;
+      box-shadow: var(--shadow);
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--love);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .step-body h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--love-dark);
+      margin-bottom: 4px;
+    }
+    .step-body p {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.7;
     }
 
     /* ── Stats counter ── */
@@ -402,6 +550,7 @@
   <a href="./" class="active">🏠 首页</a>
   <a href="tools/">🧰 工具箱</a>
   <a href="adhders/">⭐ ADHDer</a>
+  <a href="resources/">📚 资源</a>
 </nav>
 
 <!-- ══════ HERO ══════ -->
@@ -549,6 +698,153 @@
       <div class="myth-a">❌ <strong>真相：</strong> 药物可以缓解症状，但 ADHD 不是一种需要「治愈」的疾病。
       药物就像眼镜——它帮助你看得更清楚，但它没有「治好」你的近视。
       更好的方式是药物 + 行为策略 + 自我接纳的综合管理。</div>
+    </div>
+  </section>
+
+  <!-- ══════ THREE TYPES ══════ -->
+  <section>
+    <h2 class="section-title">ADHD 的三种类型</h2>
+    <p class="section-sub">ADHD 不是只有「坐不住」这一种样子</p>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <span class="type-icon">💭</span>
+        <h4>注意力不集中型</h4>
+        <div class="type-sub">ADHD-PI · 以前叫 ADD</div>
+        <p>看起来「人在心不在」，容易走神、丢三落四、难以完成任务。
+        这类人往往安静而内向，不容易被注意到，尤其是女孩。<br>
+        <strong style="color:var(--love);">容易被误解为：</strong> 爱发呆、不努力、懒</p>
+      </div>
+      <div class="type-card">
+        <span class="type-icon">⚡</span>
+        <h4>多动冲动型</h4>
+        <div class="type-sub">ADHD-HI</div>
+        <p>静不下来、坐不住、话多、插嘴、容易冲动决定。
+        这是大家最熟悉的 ADHD 形象——但也是被过度简化的。<br>
+        <strong style="color:var(--love);">容易被误解为：</strong> 皮、没礼貌、管不住</p>
+      </div>
+      <div class="type-card">
+        <span class="type-icon">🔄</span>
+        <h4>混合型</h4>
+        <div class="type-sub">ADHD-C · 最常见</div>
+        <p>同时具有注意力不集中和多动冲动的特征。
+        这是最常见的 ADHD 类型，症状会随着环境和年龄变化。<br>
+        <strong style="color:var(--love);">容易被误解为：</strong> 不稳定、难搞、不成熟</p>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top: 20px;">
+      <p>🧬 重要的是：无论哪种类型，都不是「故意的」。大脑的执行功能差异是这些行为的根本原因，不是态度问题。</p>
+    </div>
+  </section>
+
+  <!-- ══════ CAUSES ══════ -->
+  <section>
+    <h2 class="section-title">ADHD 是怎么来的？</h2>
+    <p class="section-sub">科学研究告诉我们什么</p>
+
+    <div class="cause-grid">
+      <div class="cause-item">
+        <span class="cause-icon">🧬</span>
+        <h4>遗传因素</h4>
+        <p>ADHD 有很强的遗传性。如果直系亲属有 ADHD，你的风险会高出 4-6 倍。这就像遗传身高或眼睛颜色一样自然。</p>
+      </div>
+      <div class="cause-item">
+        <span class="cause-icon">🧠</span>
+        <h4>大脑结构差异</h4>
+        <p>ADHD 大脑的前额叶皮层（负责规划、专注、冲动控制）发育稍慢，多巴胺和去甲肾上腺素系统运作方式不同。</p>
+      </div>
+      <div class="cause-item">
+        <span class="cause-icon">🔬</span>
+        <h4>环境因素</h4>
+        <p>早产、低出生体重、孕期某些物质暴露等可能增加风险。但这不是父母「做错了什么」——没有人故意选择让宝宝有 ADHD。</p>
+      </div>
+    </div>
+
+    <div class="cause-not">
+      <p><strong>❌ ADHD 不是这些引起的：</strong>
+      吃糖太多 · 看太多电视/手机 · 家教不好 · 父母太忙没时间陪 ·
+      学校太差 · 教养方式不对 · 打了疫苗。
+      ADHD 是神经发育差异，不是社会问题或教育问题造成的。</p>
+    </div>
+  </section>
+
+  <!-- ══════ ADULT SIGNS ══════ -->
+  <section>
+    <h2 class="section-title">成年人 ADHD 的隐藏信号</h2>
+    <p class="section-sub">和「多动的小男孩」完全不同——很多人直到30、40岁才意识到</p>
+
+    <div class="signs-grid">
+      <div class="sign-card">
+        <h4>📋 拖延到最后一刻</h4>
+        <p>只有在截止日期前才能开始做事，平时再怎么想努力都动不起来。
+        不是懒——是真的「启动不了」。</p>
+      </div>
+      <div class="sign-card">
+        <h4>🔄 频繁换工作/兴趣</h4>
+        <p>热衷三个月，然后突然失去兴趣。换行业、学新技能、又放弃——不是因为没毅力，而是大脑需要新鲜刺激。</p>
+      </div>
+      <div class="sign-card">
+        <h4>😤 情绪失调</h4>
+        <p>对小事反应过度——被批评就崩溃、被拒绝就愤怒、兴奋时停不下来。
+        这叫「情绪失调」（RSD），是 ADHD 常见的隐藏症状。</p>
+      </div>
+      <div class="sign-card">
+        <h4>💰 冲动消费</h4>
+        <p>看到喜欢的东西立刻下单，信用卡账单让人崩溃。
+        因为大脑追求多巴胺刺激，「先买再想」是本能反应。</p>
+      </div>
+      <div class="sign-card">
+        <h4>💤 入睡困难</h4>
+        <p>白天被各种刺激占满的大脑，晚上终于安静下来——然后开始疯狂运转。
+        躺在床上，脑子里有一百个念头在同时播放。</p>
+      </div>
+      <div class="sign-card">
+        <h4>🤝 人际关系挑战</h4>
+        <p>容易打断别人、忘记约定、回复消息到一半消失……不是不在乎，是真的在执行功能上有困难。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ NEXT STEPS ══════ -->
+  <section>
+    <h2 class="section-title">现在可以做什么？</h2>
+    <p class="section-sub">不着急，一步一步来</p>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>了解更多</h4>
+          <p>你已经在做了 🎉 阅读科普、看过来人的分享、关注 ADHD 相关的自媒体和社群。知识本身就是力量。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>自我观察，做记录</h4>
+          <p>把让你困扰的具体情况记下来：什么场景下最难专注？什么时候最有动力？这些记录对未来的诊断非常有帮助。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>尝试 ADHD 友好的方法</h4>
+          <p>先试试本站的 <a href="tools/" style="color:var(--love);font-weight:600;text-decoration:none;">🧰 工具箱</a>——
+          番茄时钟、待办清单、呼吸练习——这些就是 ADHD 管理中最常用的策略。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>寻求专业帮助</h4>
+          <p>如果你怀疑自己有 ADHD，可以去公立医院的精神科或心理科做评估。ADHD 的诊断需要专业医生综合判断，网上测试仅供参考。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top: 20px;">
+      <p>💛 无论你是否被诊断、无论你处于哪个阶段——你都值得被理解和支持。</p>
     </div>
   </section>
 
