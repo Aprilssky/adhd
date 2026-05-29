@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>专注小岛 · ADHD 工具箱</title>
+  <title>ADHD 专注小岛 · 用爱理解每一种大脑</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f8f6fb;
+      --bg: #fdf5f0;
       --card: #ffffff;
-      --primary: #7c6fa0;
-      --primary-light: #a695c6;
-      --primary-dark: #5a4d7a;
-      --accent: #e8a87c;
-      --accent-light: #f5d4b8;
-      --text: #3d3352;
-      --text-soft: #7a6f8a;
-      --text-muted: #a99fba;
-      --border: #e8e3ee;
-      --shadow: 0 2px 16px rgba(124, 111, 160, 0.08);
-      --radius: 16px;
-      --radius-sm: 10px;
-      --transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      --love: #e88282;
+      --love-light: #f5baba;
+      --love-dark: #c25b5b;
+      --warm: #f0c4a0;
+      --warm-light: #f8e2d0;
+      --text: #3d2e2e;
+      --text-soft: #7a6363;
+      --text-muted: #b09696;
+      --border: #f0e0d8;
+      --shadow: 0 4px 24px rgba(232, 130, 130, 0.10);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --transition: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     body {
@@ -32,431 +32,560 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── Nav ── */
+    .top-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      text-decoration: none;
+      color: var(--text-soft);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 20px;
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+    .top-nav a:hover { background: var(--warm-light); color: var(--love-dark); }
+    .top-nav a.active {
+      background: var(--love);
+      color: #fff;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 60px 24px 50px;
+      background: linear-gradient(160deg, #fdf5f0 0%, #fce4e4 40%, #fdf5f0 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,130,130,0.08) 0%, transparent 70%);
+      top: -100px;
+      right: -150px;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240,196,160,0.10) 0%, transparent 70%);
+      bottom: -100px;
+      left: -120px;
+    }
+
+    .heart-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .heart-svg {
+      width: 110px;
+      height: 110px;
+      animation: heartbeat 1.6s ease-in-out infinite;
+      filter: drop-shadow(0 4px 20px rgba(232,130,130,0.3));
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15%      { transform: scale(1.15); }
+      30%      { transform: scale(1); }
+      45%      { transform: scale(1.12); }
+      60%      { transform: scale(1); }
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--love-dark);
+      letter-spacing: -1px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 span { color: var(--love); }
+    .hero p {
+      color: var(--text-soft);
+      font-size: 17px;
+      max-width: 500px;
+      margin: 12px auto 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 32px;
+      background: var(--love);
+      color: #fff;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      z-index: 1;
+    }
+    .hero-cta:hover {
+      background: var(--love-dark);
+      transform: scale(1.05);
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    section {
+      padding: 50px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--love-dark);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    /* ── What is ADHD ── */
+    .intro-text p {
+      font-size: 15.5px;
+      color: var(--text);
+      margin-bottom: 16px;
+      text-indent: 2em;
+    }
+    .intro-text p:last-child { margin-bottom: 0; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #fce4e4 0%, #fdf5f0 100%);
+      border-left: 4px solid var(--love);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .highlight-box p {
+      text-indent: 0 !important;
+      font-weight: 500;
+      color: var(--love-dark);
+    }
+
+    /* ── Traits Grid ── */
+    .traits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .trait-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      transition: var(--transition);
+      cursor: default;
+    }
+    .trait-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: var(--love-light);
+    }
+    .trait-card .emoji { font-size: 28px; display: block; margin-bottom: 8px; }
+    .trait-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--love-dark);
+      margin-bottom: 6px;
+    }
+    .trait-card p {
+      font-size: 13.5px;
+      color: var(--text-soft);
       line-height: 1.6;
     }
 
-    /* ── Header ── */
-    header {
-      text-align: center;
-      padding: 40px 20px 24px;
-      background: linear-gradient(145deg, #f0ebf7 0%, #f8f6fb 100%);
-      border-bottom: 1px solid var(--border);
-    }
-    header h1 {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--primary-dark);
-      letter-spacing: -0.5px;
-    }
-    header h1 span { color: var(--accent); }
-    header p {
-      color: var(--text-soft);
-      font-size: 15px;
-      margin-top: 6px;
-      font-weight: 400;
-    }
-
-    /* ── Layout ── */
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 24px 16px 60px;
-      display: grid;
-      gap: 20px;
-    }
-
-    .card {
+    /* ── Myths ── */
+    .myth-box {
       background: var(--card);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
       padding: 24px 28px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
     }
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 24px rgba(124, 111, 160, 0.12);
+    .myth-box:last-child { margin-bottom: 0; }
+    .myth-q {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 6px;
     }
-    .card-title {
+    .myth-q .label {
+      display: inline-block;
+      background: #fce4e4;
+      color: var(--love-dark);
+      font-size: 12px;
+      padding: 2px 10px;
+      border-radius: 50px;
+      margin-right: 8px;
+    }
+    .myth-a {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.7;
+      padding-left: 10px;
+      border-left: 3px solid var(--love-light);
+    }
+
+    /* ── Love Letter ── */
+    .love-letter {
+      background: linear-gradient(160deg, #fce4e4 0%, #fdf5f0 60%);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .love-letter::before {
+      content: '💌';
+      font-size: 40px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .love-letter p {
+      font-size: 15.5px;
+      color: var(--text);
+      line-height: 2;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .love-letter p em {
+      color: var(--love);
+      font-style: normal;
+      font-weight: 600;
+    }
+    .love-sign {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--love-dark);
+    }
+    .floating-hearts {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .floating-hearts span {
+      position: absolute;
+      font-size: 18px;
+      animation: floatHeart 6s ease-in-out infinite;
+      opacity: 0.2;
+    }
+    .floating-hearts span:nth-child(1) { left: 10%; top: 10%; animation-delay: 0s; }
+    .floating-hearts span:nth-child(2) { left: 30%; top: 60%; animation-delay: 1.5s; font-size: 14px; }
+    .floating-hearts span:nth-child(3) { right: 15%; top: 20%; animation-delay: 3s; }
+    .floating-hearts span:nth-child(4) { right: 35%; bottom: 10%; animation-delay: 4.5s; font-size: 22px; }
+
+    @keyframes floatHeart {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25%      { transform: translateY(-12px) rotate(8deg); }
+      75%      { transform: translateY(-6px) rotate(-4deg); }
+    }
+
+    /* ── CTA Banner ── */
+    .cta-banner {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(160deg, #fdf5f0, #fce4e4);
+      border-radius: var(--radius);
+      margin: 16px 0;
+    }
+    .cta-banner h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--love-dark);
+    }
+    .cta-banner p {
+      color: var(--text-soft);
+      font-size: 15px;
+      margin: 8px 0 20px;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 14px 40px;
+      background: var(--love);
+      color: #fff;
+      border-radius: 50px;
+      text-decoration: none;
       font-size: 16px;
       font-weight: 600;
-      color: var(--primary-dark);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .card-title .icon { font-size: 20px; }
-
-    /* ── Grid ── */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    /* ── Pomodoro ── */
-    .pomodoro-display {
-      font-size: 56px;
-      font-weight: 700;
-      text-align: center;
-      color: var(--primary-dark);
-      font-variant-numeric: tabular-nums;
-      letter-spacing: 2px;
-      margin: 8px 0 4px;
-    }
-    .pomodoro-phase {
-      text-align: center;
-      font-size: 14px;
-      color: var(--text-soft);
-      margin-bottom: 16px;
-    }
-    .pomodoro-controls {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .pomodoro-btn {
-      border: none;
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--transition);
-      font-family: inherit;
-    }
-    .pomodoro-btn.primary {
-      background: var(--primary);
-      color: #fff;
-    }
-    .pomodoro-btn.primary:hover {
-      background: var(--primary-dark);
-      transform: scale(1.04);
-    }
-    .pomodoro-btn.primary.active {
-      background: var(--accent);
-    }
-    .pomodoro-btn.secondary {
-      background: var(--border);
-      color: var(--text-soft);
-    }
-    .pomodoro-btn.secondary:hover {
-      background: #dcd5e6;
-    }
-    .pomodoro-btn.secondary:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    /* ── Todo ── */
-    .todo-input-wrap {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-    .todo-input-wrap input {
-      flex: 1;
-      border: 2px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      font-size: 14px;
-      font-family: inherit;
-      background: var(--bg);
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .todo-input-wrap input:focus {
-      border-color: var(--primary-light);
-    }
-    .todo-input-wrap input::placeholder {
-      color: var(--text-muted);
-    }
-    .todo-add-btn {
-      border: none;
-      background: var(--primary);
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--transition);
-      font-family: inherit;
-    }
-    .todo-add-btn:hover { background: var(--primary-dark); }
-
-    .todo-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .todo-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      background: var(--bg);
-      border-radius: var(--radius-sm);
-      transition: background 0.2s;
-    }
-    .todo-item:hover { background: #f0ebf7; }
-    .todo-item input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--primary);
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .todo-item label {
-      flex: 1;
-      font-size: 14px;
-      cursor: pointer;
-      word-break: break-word;
-    }
-    .todo-item label.done {
-      text-decoration: line-through;
-      color: var(--text-muted);
-    }
-    .todo-item .del-btn {
-      border: none;
-      background: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 18px;
-      line-height: 1;
-      padding: 0 4px;
-      transition: color 0.2s;
-    }
-    .todo-item .del-btn:hover { color: #e07070; }
-
-    .todo-empty {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 14px;
-      padding: 20px 0;
-    }
-
-    /* ── Quick Note ── */
-    .note-area {
-      width: 100%;
-      min-height: 90px;
-      border: 2px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 12px 14px;
-      font-size: 14px;
-      font-family: inherit;
-      background: var(--bg);
-      color: var(--text);
-      resize: vertical;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .note-area:focus {
-      border-color: var(--primary-light);
-    }
-    .note-area::placeholder {
-      color: var(--text-muted);
-    }
-
-    /* ── Quote ── */
-    .quote-box {
-      text-align: center;
-      padding: 4px 0;
-    }
-    .quote-text {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text-soft);
-      font-style: italic;
-      line-height: 1.7;
-    }
-    .quote-text::before { content: '\201C'; }
-    .quote-text::after { content: '\201D'; }
-
-    /* ── Mood / Focus tracker ── */
-    .mood-grid {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 6px;
-    }
-    .mood-btn {
-      border: 2px solid var(--border);
-      background: var(--bg);
-      border-radius: var(--radius-sm);
-      padding: 8px 12px;
-      font-size: 22px;
-      cursor: pointer;
       transition: var(--transition);
     }
-    .mood-btn:hover, .mood-btn.active {
-      border-color: var(--primary-light);
-      background: #f0ebf7;
-      transform: scale(1.1);
+    .cta-btn:hover {
+      background: var(--love-dark);
+      transform: scale(1.05);
     }
 
     /* ── Footer ── */
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 40px 20px;
       color: var(--text-muted);
       font-size: 13px;
+      background: linear-gradient(160deg, #fdf5f0, #faf0f0);
     }
-    footer a { color: var(--primary-light); text-decoration: none; }
+    footer a { color: var(--love); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
     /* ── Responsive ── */
     @media (max-width: 640px) {
-      .grid-2 { grid-template-columns: 1fr; }
-      header h1 { font-size: 24px; }
-      .pomodoro-display { font-size: 44px; }
-      .card { padding: 20px; }
+      .hero h1 { font-size: 28px; }
+      .heart-svg { width: 90px; height: 90px; }
+      .traits-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 21px; }
+      .love-letter { padding: 28px 20px; }
+      .love-letter p { font-size: 14.5px; }
+      .hero { padding: 40px 20px 36px; }
     }
 
-    /* ── Animations ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* ── Stats counter ── */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 24px 0;
+      flex-wrap: wrap;
     }
-    .card { animation: fadeUp 0.5s ease both; }
-    .card:nth-child(2) { animation-delay: 0.08s; }
-    .card:nth-child(3) { animation-delay: 0.16s; }
-    .card:nth-child(4) { animation-delay: 0.24s; }
-    .card:nth-child(5) { animation-delay: 0.32s; }
-
-    /* ── Breathe helper ── */
-    .breathe-circle {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin: 10px auto;
-      background: conic-gradient(var(--primary-light) 0deg, var(--accent-light) 180deg, var(--primary-light) 360deg);
-      transition: transform 4s ease-in-out;
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--love);
     }
-    .breathe-circle.inhale {
-      transform: scale(1);
-      animation: breatheIn 4s ease-in-out forwards;
-    }
-    .breathe-circle.exhale {
-      transform: scale(0.6);
-      animation: breatheOut 4s ease-in-out forwards;
-    }
-    @keyframes breatheIn {
-      0%   { transform: scale(0.6); opacity: 0.7; }
-      100% { transform: scale(1);   opacity: 1; }
-    }
-    @keyframes breatheOut {
-      0%   { transform: scale(1);   opacity: 1; }
-      100% { transform: scale(0.6); opacity: 0.7; }
-    }
-    .breathe-label {
-      text-align: center;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-soft);
-      margin-top: 4px;
-    }
-    .breathe-btn {
-      display: block;
-      margin: 10px auto 0;
-      border: none;
-      background: var(--primary);
-      color: #fff;
-      padding: 8px 24px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--transition);
-      font-family: inherit;
-    }
-    .breathe-btn:hover { background: var(--primary-dark); }
-    .breathe-btn.active { background: var(--accent); }
-
-    /* local save feedback */
-    .save-hint {
-      font-size: 12px;
+    .stat-label {
+      font-size: 13px;
       color: var(--text-muted);
-      text-align: right;
-      margin-top: 8px;
-      opacity: 0;
-      transition: opacity 0.4s;
     }
-    .save-hint.show { opacity: 1; }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>🌿 专注小岛</h1>
-  <p>一个温柔的 ADHD 工具箱 · 帮你找回节奏</p>
-</header>
+<nav class="top-nav">
+  <a href="./" class="active">🏠 首页</a>
+  <a href="tools/">🧰 工具箱</a>
+</nav>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="heart-container">
+    <svg class="heart-svg" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 88.5C50 88.5 3 60 3 28.5C3 14.5 14.5 3 28.5 3C37.5 3 45 8.5 50 16C55 8.5 62.5 3 71.5 3C85.5 3 97 14.5 97 28.5C97 60 50 88.5 50 88.5Z"
+        fill="url(#heartGrad)" stroke="none"/>
+      <defs>
+        <linearGradient id="heartGrad" x1="50" y1="3" x2="50" y2="88.5" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#f5baba"/>
+          <stop offset="0.5" stop-color="#e88282"/>
+          <stop offset="1" stop-color="#c25b5b"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  <h1>用 <span>❤️</span> 理解 ADHD</h1>
+  <p>每一种大脑都值得被温柔对待。<br>这不是一个需要被「治愈」的疾病，而是一种不同的思考方式。</p>
+  <a href="#what" class="hero-cta">了解 ADHD →</a>
+</section>
 
 <div class="container">
 
-  <!-- Pomodoro -->
-  <div class="card">
-    <div class="card-title"><span class="icon">🍅</span> 番茄时钟</div>
-    <div class="pomodoro-display" id="pomodoroDisplay">25:00</div>
-    <div class="pomodoro-phase" id="pomodoroPhase">专注时间</div>
-    <div class="pomodoro-controls">
-      <button class="pomodoro-btn primary" id="pomodoroToggle">开始</button>
-      <button class="pomodoro-btn secondary" id="pomodoroReset">重置</button>
-    </div>
-  </div>
+  <!-- ══════ WHAT IS ADHD ══════ -->
+  <section id="what">
+    <h2 class="section-title">什么是 ADHD？</h2>
+    <p class="section-sub">用最简单的方式，理解这件事</p>
 
-  <!-- Grid: Todo + Notes -->
-  <div class="grid-2">
-    <!-- Todo -->
-    <div class="card">
-      <div class="card-title"><span class="icon">✅</span> 待办清单</div>
-      <div class="todo-input-wrap">
-        <input type="text" id="todoInput" placeholder="写点想做的事…" maxlength="120">
-        <button class="todo-add-btn" id="todoAdd">添加</button>
+    <div class="intro-text">
+      <p><strong>ADHD</strong>（注意力缺陷多动障碍）不是「不乖」也不是「懒」。
+      它是一种 <strong>大脑天生的运作方式不同</strong>——就像有人是左撇子，有人右撇子那样自然。</p>
+
+      <p>ADHD 的大脑对 <strong>多巴胺</strong> 的处理方式不同，所以在做不感兴趣的事情时很难集中注意力，
+      但做喜欢的事情时可以完全沉浸（这叫「超专注」hyperfocus）。<br>
+      这不是「无法专注」，而是 <strong>无法控制专注的对象</strong>。</p>
+
+      <div class="highlight-box">
+        <p>🧠 ADHD 不是智力问题、不是性格缺陷、不是家教不好。<br>
+        它是一种神经发育差异——大脑的「布线」与众不同，仅此而已。</p>
       </div>
-      <ul class="todo-list" id="todoList">
-        <div class="todo-empty" id="todoEmpty">✨ 清单空空，加个任务吧</div>
-      </ul>
-      <div class="save-hint" id="todoSaveHint">已自动保存</div>
+
+      <p>全球大约 <strong>5-7%</strong> 的儿童和 <strong>2.5-4%</strong> 的成年人有 ADHD。
+      很多人直到成年后才被确诊，因为小时候被认为是「聪明但不努力」。</p>
     </div>
 
-    <!-- Quick Note -->
-    <div class="card">
-      <div class="card-title"><span class="icon">📝</span> 随手记</div>
-      <textarea class="note-area" id="noteArea" placeholder="突然想到什么？记下来…" maxlength="2000"></textarea>
-      <div class="save-hint" id="noteSaveHint">已自动保存</div>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">~5%</div>
+        <div class="stat-label">儿童患病率</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">~3%</div>
+        <div class="stat-label">成人患病率</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">60%</div>
+        <div class="stat-label">儿童症状会延续到成年</div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Breathing -->
-  <div class="card">
-    <div class="card-title"><span class="icon">🫁</span> 呼吸练习</div>
-    <div class="breathe-circle" id="breatheCircle"></div>
-    <div class="breathe-label" id="breatheLabel">按下方按钮开始</div>
-    <button class="breathe-btn" id="breatheToggle">开始 4-4 呼吸</button>
-  </div>
+  <!-- ══════ TRAITS ══════ -->
+  <section>
+    <h2 class="section-title">ADHD 不是缺陷，是不同</h2>
+    <p class="section-sub">每个特点都有它的正面</p>
 
-  <!-- Quote -->
-  <div class="card">
-    <div class="quote-box" id="quoteBox">
-      <div class="quote-text">每个人都有自己的节奏，不需要和别人比</div>
+    <div class="traits-grid">
+      <div class="trait-card">
+        <span class="emoji">🎯</span>
+        <h4>难以专注不感兴趣的事</h4>
+        <p>但对自己热爱的事情有惊人的超专注能力，可以沉浸数小时忘记时间。</p>
+      </div>
+      <div class="trait-card">
+        <span class="emoji">💡</span>
+        <h4>思维跳跃 · 发散性强</h4>
+        <p>联想丰富，能把看似无关的事情连接起来，常有出人意料的创意和点子。</p>
+      </div>
+      <div class="trait-card">
+        <span class="emoji">⚡</span>
+        <h4>冲动 · 行动派</h4>
+        <p>想到就做，虽然有时缺乏规划，但也意味着超强的行动力和执行力。</p>
+      </div>
+      <div class="trait-card">
+        <span class="emoji">🎨</span>
+        <h4>情绪敏感 · 共情力强</h4>
+        <p>感受丰富而强烈，对美、音乐、艺术有深刻体验，也能轻易感知他人情绪。</p>
+      </div>
+      <div class="trait-card">
+        <span class="emoji">🌀</span>
+        <h4>时间盲 · 活在当下</h4>
+        <p>对时间流逝不敏感，但这也意味着你更专注于「现在」，不被过去或未来过度束缚。</p>
+      </div>
+      <div class="trait-card">
+        <span class="emoji">🔍</span>
+        <h4>高度敏感 · 细节发现者</h4>
+        <p>容易注意到别人忽略的细节、声音、气味、情绪变化——这是一种超能力。</p>
+      </div>
+      <div class="trait-card">
+        <span class="emoji">🔥</span>
+        <h4>兴趣驱动 · 求知欲强</h4>
+        <p>对新东西有无尽的好奇心，兴趣爱好广泛，总是尝试新事物——生活充满激情。</p>
+      </div>
+      <div class="trait-card">
+        <span class="emoji">💪</span>
+        <h4>危机模式 · 爆发力惊人</h4>
+        <p>最后一刻总能奇迹般完成任务，压力之下反而性能最佳——天生的应急选手。</p>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Mood tracker -->
-  <div class="card">
-    <div class="card-title"><span class="icon">💫</span> 现在感觉怎么样？</div>
-    <div class="mood-grid" id="moodGrid">
-      <button class="mood-btn" data-mood="😊">😊</button>
-      <button class="mood-btn" data-mood="😌">😌</button>
-      <button class="mood-btn" data-mood="😐">😐</button>
-      <button class="mood-btn" data-mood="😵">😵</button>
-      <button class="mood-btn" data-mood="😴">😴</button>
+  <!-- ══════ MYTHS ══════ -->
+  <section>
+    <h2 class="section-title">误解 vs 真相</h2>
+    <p class="section-sub">那些关于 ADHD 的常见误会</p>
+
+    <div class="myth-box">
+      <div class="myth-q"><span class="label">误解</span> ADHD 是因为太懒了</div>
+      <div class="myth-a">❌ <strong>真相：</strong> ADHD 是一种大脑执行功能的障碍，不是态度问题。懒是不想做，ADHD 是想做但做不到。这不是同一个东西。大脑的前额叶皮层（负责「开始做事」的区域）在 ADHD 者身上活跃度较低，这不是靠「努力」就能克服的。</div>
     </div>
-  </div>
+
+    <div class="myth-box">
+      <div class="myth-q"><span class="label">误解</span> ADHD 长大就好了</div>
+      <div class="myth-a">❌ <strong>真相：</strong> ADHD 是伴随终身的神经发育差异，不会"长大就没了"。
+      大约 60% 的儿童 ADHD 症状会持续到成年。只是长大后学会了更多应对策略，
+      症状的「表现方式」变了，但差异本身一直都在。</div>
+    </div>
+
+    <div class="myth-box">
+      <div class="myth-q"><span class="label">误解</span> 只有好动的小男孩才有 ADHD</div>
+      <div class="myth-a">❌ <strong>真相：</strong> ADHD 不分性别年龄。女性 ADHD 患者常常被忽视，
+      因为她们更多表现为「注意力不集中型」（而非多动型），看起来只是「爱发呆」或「敏感」。
+      很多女性直到 30、40 岁才被确诊。</div>
+    </div>
+
+    <div class="myth-box">
+      <div class="myth-q"><span class="label">误解</span> ADHD 的人永远无法专注</div>
+      <div class="myth-a">❌ <strong>真相：</strong> ADHD 者不是无法专注，而是无法 <em>选择</em> 专注什么。
+      对于感兴趣的事情，ADHD 者可以进入「超专注」状态，专注程度甚至远超常人。
+      这就是为什么有人玩游戏能坐 8 小时，但写作业 5 分钟就坐不住。</div>
+    </div>
+
+    <div class="myth-box">
+      <div class="myth-q"><span class="label">误解</span> 吃药就能「治好」ADHD</div>
+      <div class="myth-a">❌ <strong>真相：</strong> 药物可以缓解症状，但 ADHD 不是一种需要「治愈」的疾病。
+      药物就像眼镜——它帮助你看得更清楚，但它没有「治好」你的近视。
+      更好的方式是药物 + 行为策略 + 自我接纳的综合管理。</div>
+    </div>
+  </section>
+
+  <!-- ══════ LOVE LETTER ══════ -->
+  <section>
+    <h2 class="section-title">给每一个 ADHDer 的 💌</h2>
+    <p class="section-sub">你不需要变成「正常人」，你本来就很好</p>
+
+    <div class="love-letter">
+      <div class="floating-hearts">
+        <span>❤️</span>
+        <span>💕</span>
+        <span>❤️</span>
+        <span>💗</span>
+      </div>
+      <p>
+        你的大脑不是坏掉了。<br>
+        它只是以一种不一样的方式在运作——<br>
+        它可以同时处理十件事，也可以为一件事痴迷一整天；<br>
+        它记得住八年前的尴尬瞬间，却想不起今天出门有没有带钥匙；<br>
+        它总在寻找刺激，却也总能发现别人看不到的美好。<br><br>
+        这个世界是为「标准大脑」设计的，这不代表你的大脑有错。<br>
+        你不需要把自己塞进一个不适合的模具里。<br>
+        你需要的，是理解自己的运作方式，<br>
+        找到适合你的节奏、工具和方法。<br><br>
+        <em>你不是散漫，你只是有自己的节拍。</em><br>
+        <em>你不是懒惰，你只是需要不同的启动方式。</em><br>
+        <em>你不是奇怪，你是独特。</em>
+      </p>
+      <div class="love-sign">💛 你不是一个人</div>
+    </div>
+  </section>
+
+  <!-- ══════ CTA ══════ -->
+  <section class="cta-banner">
+    <h3>🧰 试试这些 ADHD 友好小工具</h3>
+    <p>番茄时钟 · 待办清单 · 随手记 · 呼吸练习 · 心情记录</p>
+    <a href="tools/" class="cta-btn">进入工具箱 →</a>
+  </section>
 
 </div>
 
@@ -465,311 +594,15 @@
 </footer>
 
 <script>
-// ── Quotes ──
-const QUOTES = [
-  '每个人都有自己的节奏，不需要和别人比',
-  '完成比完美更重要',
-  '你不需要一直高效，你只需要开始',
-  '做一点，比什么都不做好',
-  '分心不是失败，是大脑在寻找刺激',
-  '允许自己慢慢来',
-  '混乱也可以是一种秩序',
-  '你今天能起床就很棒了',
-  '注意力像肌肉，越练越强',
-  '小步前进，也是前进',
-  '你的大脑只是运作方式不同，不是坏掉了',
-  '不需要一直在线，离线也很好',
-];
-
-// ── LocalStorage helpers ──
-function lsGet(k, def) {
-  try { const v = localStorage.getItem(k); return v !== null ? JSON.parse(v) : def; }
-  catch { return def; }
-}
-function lsSet(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
-
-// ── Show save hint ──
-function showHint(el) {
-  el.classList.add('show');
-  clearTimeout(el._hintTimer);
-  el._hintTimer = setTimeout(() => el.classList.remove('show'), 1500);
-}
-
-// ── init ──
-function init() {
-  initPomodoro();
-  initTodo();
-  initNote();
-  initBreathe();
-  initMood();
-  initQuote();
-}
-document.addEventListener('DOMContentLoaded', init);
-
-// ══════════════════════════════════════
-// POMODORO
-// ══════════════════════════════════════
-function initPomodoro() {
-  const display = document.getElementById('pomodoroDisplay');
-  const phase = document.getElementById('pomodoroPhase');
-  const toggle = document.getElementById('pomodoroToggle');
-  const reset = document.getElementById('pomodoroReset');
-
-  const WORK = 25 * 60, BREAK = 5 * 60;
-  let time = WORK, running = false, phaseType = 'work', timer = null;
-
-  function format(t) {
-    const m = String(Math.floor(t / 60)).padStart(2, '0');
-    const s = String(t % 60).padStart(2, '0');
-    return `${m}:${s}`;
-  }
-
-  function updateDisplay() {
-    display.textContent = format(time);
-    phase.textContent = phaseType === 'work' ? '🧠 专注时间' : '☕ 休息一下';
-    display.style.color = phaseType === 'work' ? 'var(--primary-dark)' : 'var(--accent)';
-  }
-
-  function tick() {
-    if (time > 0) { time--; updateDisplay(); }
-    else {
-      // switch phase
-      if (phaseType === 'work') {
-        phaseType = 'break';
-        time = BREAK;
-        toggle.textContent = '继续';
-      } else {
-        phaseType = 'work';
-        time = WORK;
-        toggle.textContent = '继续';
-      }
-      updateDisplay();
-    }
-  }
-
-  toggle.addEventListener('click', () => {
-    if (running) {
-      clearInterval(timer); timer = null;
-      running = false;
-      toggle.textContent = '继续';
-      toggle.classList.remove('active');
-    } else {
-      if (time === 0) {
-        phaseType = 'work';
-        time = WORK;
-      }
-      timer = setInterval(tick, 1000);
-      running = true;
-      toggle.textContent = '暂停';
-      toggle.classList.add('active');
-    }
-  });
-
-  reset.addEventListener('click', () => {
-    clearInterval(timer); timer = null;
-    running = false;
-    phaseType = 'work';
-    time = WORK;
-    toggle.textContent = '开始';
-    toggle.classList.remove('active');
-    updateDisplay();
-  });
-
-  // restore from local storage
-  const saved = lsGet('pomodoro', null);
-  if (saved) {
-    time = saved.time;
-    phaseType = saved.phase;
-    updateDisplay();
-  }
-
-  // save periodically
-  setInterval(() => {
-    lsSet('pomodoro', { time, phase: phaseType });
-  }, 3000);
-
-  updateDisplay();
-}
-
-// ══════════════════════════════════════
-// TODO
-// ══════════════════════════════════════
-function initTodo() {
-  const list = document.getElementById('todoList');
-  const empty = document.getElementById('todoEmpty');
-  const input = document.getElementById('todoInput');
-  const addBtn = document.getElementById('todoAdd');
-  const hint = document.getElementById('todoSaveHint');
-
-  let todos = lsGet('todos', []);
-
-  function render() {
-    list.innerHTML = '';
-    if (todos.length === 0) {
-      list.appendChild(empty);
-      return;
-    }
-    todos.forEach((t, i) => {
-      const li = document.createElement('li');
-      li.className = 'todo-item';
-
-      const cb = document.createElement('input');
-      cb.type = 'checkbox';
-      cb.checked = t.done;
-      cb.addEventListener('change', () => {
-        todos[i].done = cb.checked;
-        label.classList.toggle('done', cb.checked);
-        save();
-      });
-
-      const label = document.createElement('label');
-      label.textContent = t.text;
-      if (t.done) label.classList.add('done');
-
-      const del = document.createElement('button');
-      del.className = 'del-btn';
-      del.textContent = '✕';
-      del.addEventListener('click', () => {
-        todos.splice(i, 1);
-        render();
-        save();
-      });
-
-      li.appendChild(cb);
-      li.appendChild(label);
-      li.appendChild(del);
-      list.appendChild(li);
-    });
-  }
-
-  function save() {
-    lsSet('todos', todos);
-    showHint(hint);
-  }
-
-  function addTodo() {
-    const text = input.value.trim();
-    if (!text) return;
-    todos.push({ text, done: false });
-    input.value = '';
-    render();
-    save();
-  }
-
-  addBtn.addEventListener('click', addTodo);
-  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') addTodo(); });
-
-  render();
-}
-
-// ══════════════════════════════════════
-// NOTE
-// ══════════════════════════════════════
-function initNote() {
-  const area = document.getElementById('noteArea');
-  const hint = document.getElementById('noteSaveHint');
-
-  area.value = lsGet('note', '');
-  let saveTimer;
-
-  area.addEventListener('input', () => {
-    clearTimeout(saveTimer);
-    saveTimer = setTimeout(() => {
-      lsSet('note', area.value);
-      showHint(hint);
-    }, 600);
-  });
-}
-
-// ══════════════════════════════════════
-// BREATHE
-// ══════════════════════════════════════
-function initBreathe() {
-  const circle = document.getElementById('breatheCircle');
-  const label = document.getElementById('breatheLabel');
-  const btn = document.getElementById('breatheToggle');
-
-  let active = false;
-  let interval;
-
-  function breatheCycle() {
-    // inhale 4s
-    label.textContent = '🌬️ 吸气…';
-    circle.className = 'breathe-circle inhale';
-
-    setTimeout(() => {
-      // hold 4s
-      label.textContent = '💨 屏气…';
-
-      setTimeout(() => {
-        // exhale 4s
-        label.textContent = '😮‍💨 呼气…';
-        circle.className = 'breathe-circle exhale';
-
-        setTimeout(() => {
-          // hold 4s
-          label.textContent = '😌 屏气…';
-        }, 4000);
-      }, 4000);
-    }, 4000);
-  }
-
-  function start() {
-    active = true;
-    btn.textContent = '停止';
-    btn.classList.add('active');
-    breatheCycle();
-    interval = setInterval(breatheCycle, 16000);
-  }
-
-  function stop() {
-    active = false;
-    btn.textContent = '开始 4-4 呼吸';
-    btn.classList.remove('active');
-    clearInterval(interval);
-    circle.className = 'breathe-circle';
-    label.textContent = '按上方按钮开始';
-  }
-
-  btn.addEventListener('click', () => {
-    active ? stop() : start();
-  });
-}
-
-// ══════════════════════════════════════
-// MOOD
-// ══════════════════════════════════════
-function initMood() {
-  const saved = lsGet('mood', null);
-  const btns = document.querySelectorAll('.mood-btn');
-
-  btns.forEach(b => {
-    if (saved && b.dataset.mood === saved) b.classList.add('active');
-    b.addEventListener('click', () => {
-      btns.forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      lsSet('mood', b.dataset.mood);
+  // ── Smooth scroll for anchor links ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
-}
-
-// ══════════════════════════════════════
-// QUOTE
-// ══════════════════════════════════════
-function initQuote() {
-  const box = document.getElementById('quoteBox');
-  let idx = Math.floor(Math.random() * QUOTES.length);
-
-  function showQuote() {
-    box.innerHTML = `<div class="quote-text">${QUOTES[idx]}</div>`;
-  }
-
-  showQuote();
-  setInterval(() => {
-    idx = (idx + 1) % QUOTES.length;
-    showQuote();
-  }, 60 * 1000); // rotate every minute
-}
 </script>
+
 </body>
 </html>
