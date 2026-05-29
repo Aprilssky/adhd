@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADHDer · 专注小岛</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f0f4fa;
+      --card: #ffffff;
+      --blue: #6a8fc9;
+      --blue-light: #a3c2e6;
+      --blue-dark: #4a6a9a;
+      --gold: #e8c87c;
+      --gold-light: #f5e4b8;
+      --text: #2e3440;
+      --text-soft: #636e7a;
+      --text-muted: #96a0ae;
+      --border: #dde3ec;
+      --shadow: 0 4px 24px rgba(106, 143, 201, 0.10);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    .top-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+    }
+    .top-nav a {
+      text-decoration: none;
+      color: var(--text-soft);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 20px;
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+    .top-nav a:hover { background: var(--gold-light); color: var(--blue-dark); }
+    .top-nav a.active {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      padding: 44px 20px 36px;
+      background: linear-gradient(160deg, #eaf0f8 0%, #f0f4fa 60%);
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--blue-dark);
+      letter-spacing: -0.5px;
+    }
+    header h1 span { color: var(--gold); }
+    header p {
+      color: var(--text-soft);
+      font-size: 15px;
+      margin-top: 8px;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+    }
+
+    .intro-box {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 32px;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+    }
+    .intro-box p {
+      font-size: 15px;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+
+    /* ── Grid ── */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 18px;
+    }
+
+    .person-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 20px 20px;
+      transition: var(--transition);
+      border: 1px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .person-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue-light), var(--gold), var(--blue-light));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .person-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(106, 143, 201, 0.15);
+      border-color: var(--blue-light);
+    }
+    .person-card:hover::before { opacity: 1; }
+
+    .person-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-light), var(--gold-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    .person-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .person-field {
+      font-size: 13px;
+      color: var(--blue);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    .person-desc {
+      font-size: 13.5px;
+      color: var(--text-soft);
+      line-height: 1.7;
+      margin-top: 10px;
+    }
+    .person-quote {
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-soft);
+      line-height: 1.6;
+      border-left: 3px solid var(--gold);
+    }
+    .person-quote::before { content: '\201C'; }
+    .person-quote::after { content: '\201D'; }
+    .person-tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 2px 10px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .tag-confirmed {
+      background: #d4edda;
+      color: #1a7a3a;
+    }
+    .tag-reported {
+      background: #fce4e4;
+      color: #b04a4a;
+    }
+
+    /* ── Section divider ── */
+    .section-divider {
+      text-align: center;
+      margin: 40px 0 24px;
+      position: relative;
+    }
+    .section-divider h3 {
+      display: inline-block;
+      background: var(--bg);
+      padding: 0 20px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--blue-dark);
+      position: relative;
+      z-index: 1;
+    }
+    .section-divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--border);
+      z-index: 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 36px 20px;
+      color: var(--text-muted);
+      font-size: 13px;
+      background: var(--card);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--blue); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      header h1 { font-size: 24px; }
+      .people-grid { grid-template-columns: 1fr; }
+      .person-card { padding: 20px 16px; }
+    }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .person-card { animation: fadeUp 0.5s ease both; }
+    .person-card:nth-child(1) { animation-delay: 0.03s; }
+    .person-card:nth-child(2) { animation-delay: 0.06s; }
+    .person-card:nth-child(3) { animation-delay: 0.09s; }
+    .person-card:nth-child(4) { animation-delay: 0.12s; }
+    .person-card:nth-child(5) { animation-delay: 0.15s; }
+    .person-card:nth-child(6) { animation-delay: 0.18s; }
+    .person-card:nth-child(7) { animation-delay: 0.21s; }
+    .person-card:nth-child(8) { animation-delay: 0.24s; }
+    .person-card:nth-child(9) { animation-delay: 0.27s; }
+    .person-card:nth-child(10) { animation-delay: 0.30s; }
+
+    /* ── Stars ── */
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 20px;
+      opacity: 0.4;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="../">🏠 首页</a>
+  <a href="../tools/">🧰 工具箱</a>
+  <a href="./" class="active">⭐ ADHDer</a>
+</nav>
+
+<header>
+  <div class="stars">✨ ⭐ ✨</div>
+  <h1>有名的 <span>ADHDer</span></h1>
+  <p>他们和你一样，大脑与众不同——却用这份不同改变了世界</p>
+</header>
+
+<div class="container">
+
+  <div class="intro-box">
+    <p>
+      ADHD 从不是成功的障碍。很多我们熟知的天才、奥运冠军、企业家、艺术家、科学家都曾公开谈论过自己的 ADHD 诊断，或在历史中被认为有明显 ADHD 特质。<br><br>
+      <strong>他们不是「尽管有 ADHD」才成功的——他们的成功，恰恰得益于这份与众不同的思维方式。</strong>
+    </p>
+  </div>
+
+  <!-- ══════ 演艺 ══════ -->
+  <div class="section-divider"><h3>🎭 演艺 · 创意</h3></div>
+  <div class="people-grid">
+
+    <div class="person-card">
+      <div class="person-avatar">🎬</div>
+      <div class="person-name">Will Smith</div>
+      <div class="person-field">演员 · 制片人 · 歌手</div>
+      <div class="person-desc">曾凭借《国王理查德》获得奥斯卡最佳男主角。2021年出版的自传中，他坦言自己被确诊 ADHD，并分享了一生中如何使用策略来管理注意力。</div>
+      <div class="person-quote">我一直觉得我的大脑在同时播放十二个频道。</div>
+      <span class="person-tag tag-confirmed">✓ 本人公开</span>
+    </div>
+
+    <div class="person-card">
+      <div class="person-avatar">🎤</div>
+      <div class="person-name">Justin Timberlake</div>
+      <div class="person-field">歌手 · 演员 · 制作人</div>
+      <div class="person-desc">十座格莱美奖得主。他表示 ADHD 让他对声音、节奏和感官刺激极其敏感，他在采访中直言 ADHD 是他创造力的一部分。</div>
+      <div class="person-quote">我的大脑总在飞速运转，但这也让我能同时处理好很多事情。</div>
+      <span class="person-tag tag-confirmed">✓ 本人公开</span>
+    </div>
+
+    <div class="person-card">
+      <div class="person-avatar">🎸</div>
+      <div class="person-name">Adam Levine</div>
+      <div class="person-field">歌手 · Maroon 5 主唱</div>
+      <div class="person-desc">魔力红乐队主唱，曾公开谈论自己被诊断 ADHD 的经历。他表示音乐是他「唯一能完全沉浸」的世界——这正是 ADHD 的超专注。</div>
+      <span class="person-tag tag-confirmed">✓ 本人公开</span>
+    </div>
+
+    <div class="person-card">
+      <div class="person-avatar">🎭</div>
+      <div class="person-name">Jim Carrey</div>
+      <div class="person-field">喜剧演员 · 演员</div>
+      <div class="person-desc">金·凯瑞以其夸张的肢体喜剧和极富感染力的表演闻名。他曾表示自己有多动倾向，他的表演风格正是 ADHD 能量的一种创造性出口。</div>
+      <span class="person-tag tag-reported">· 公开提及</span>
+    </div>
+
+    <div class="person-card">
+      <div class="person-avatar">🧙</div>
+      <div class="person-name">Emma Watson</div>
+      <div class="person-field">演员 · 社会活动家</div>
+      <div class="person-desc">赫敏·格兰杰的扮演者、联合国妇女署亲善大使。她在访谈中提到自己从小就觉得「大脑和别人不一样」，后来被诊断为 ADHD。</div>
+      <span class="person-tag tag-confirmed">✓ 本人公开</span>
+    </div>
+
+    <div class="person-card">
+      <div class="person-avatar">🎶</div>
+      <div class="person-name">Solange Knowles</div>
+      <div class="person-field">歌手 · 词曲作者</div>
+      <div class="person-desc">碧昂丝的妹妹，独立音乐人。她公开表示 ADHD 是她的「超能力」，让她对声音、色彩和节奏有非同寻常的感知力。</div>
+      <span class="person-tag tag-confirmed">✓ 本人公开</span>
+    </div>
+
+  </div>
+
+  <!-- ══════ 体育 ══════ -->
+  <div class="section-divider"><h3>🏅 体育 · 竞技</h3></div>
+  <div class="people-grid">
+
+    <div class="person-card">
+      <div class="person-avatar">🏊</div>
+      <div class="person-name">Michael Phelps</div>
+      <div class="person-field">游泳运动员 · 23枚奥运金牌</div>
+      <div class="person-desc">奥运史上最伟大的运动员之一。9岁被诊断 ADHD，妈妈靠游泳帮他释放能量。他直言游泳是他找到「内心平静」的方式——把 ADHD 的无穷精力转化为世界纪录。</div>
+      <div class="person-quote">有人告诉我有 ADHD 意味着我永远无法成功，我用行动证明了他们错了。</div>
+      <span class="person-tag tag-confirmed">✓ 本人公开</span>
+    </div>
+
+    <div class="person-card">
+      <div class="person-avatar">🤸</div>
+      <div class="person-name">Simone Biles</div>
+      <div class="person-field">体操运动员 · 7枚奥运奖牌</div>
+      <div class="person-desc">史上最伟大的体操运动员，拥有以她名字命名的独创动作。她在奥运选拔赛后公开自己的 ADHD 诊断，并说：『ADHD 没什么好羞耻的，它让我成为今天的我。』</div>
+      <div class="person-quote">有 ADHD 并没有什么错，如果有需要就去寻求帮助。</div>
+      <span class="person-tag tag-confirmed">✓ 本人公开</span>
+    </div>
+
+    <div class="person-card">
+      <div class="person-avatar">🏈</div>
+      <div class="person-name">Terry Bradshaw</div>
+      <div class="person-field">美式橄榄球 · 4次超级碗冠军</div>
+      <div class="person-desc">NFL 传奇四分卫，也是体育评论员和演员。他在晚年被确诊 ADHD，说诊断让他终于明白了自己一生中的种种挣扎。</div>
+      <span class="person-tag tag-confirmed">✓ 本人公开</span>
+    </div>
+
+  </div>
+
+  <!-- ══════ 商业 ══════ -->
+  <div class="section-divider"><h3>💼 商业 · 创新</h3></div>
+  <div class="people-grid">
+
+    <div class="person-card">
+      <div class="person-avatar">🚀</div>
+      <div class="person-name">Richard Branson</div>
+      <div class="person-field">维珍集团创始人</div>
+      <div class="person-desc">身价数十亿的维珍帝国创始人，15岁因多动症辍学。他把 ADHD 的能量和冒险精神转化为商业天赋，创办了400多家公司。</div>
+      <div class="person-quote">我的 ADHD 让我不断寻找新的挑战，从不满足于现状。</div>
+      <span class="person-tag tag-confirmed">✓ 本人公开</span>
+    </div>
+
+    <div class="person-card">
+      <div class="person-avatar">✈️</div>
+      <div class="person-name">David Neeleman</div>
+      <div class="person-field">JetBlue 创始人</div>
+      <div class="person-desc">JetBlue 航空公司创始人。他公开表示 ADHD 是他创业成功的关键因素，让他能「同时看到全局和细节」。</div>
+      <div class="person-quote">ADHD 是我成功的秘密武器，它让我能快速切换思维。</div>
+      <span class="person-tag tag-confirmed">✓ 本人公开</span>
+    </div>
+
+    <div class="person-card">
+      <div class="person-avatar">🪑</div>
+      <div class="person-name">Ingvar Kamprad</div>
+      <div class="person-field">宜家 IKEA 创始人</div>
+      <div class="person-desc">宜家帝国的创始人。他曾被诊断有阅读障碍和 ADHD 相关症状。他的「不按常规做事」和不断改进的冲动，正是宜家精神的核心。</div>
+      <span class="person-tag tag-reported">· 报道记录</span>
+    </div>
+
+  </div>
+
+  <!-- ══════ 科学 ══════ -->
+  <div class="section-divider"><h3>🔬 科学 · 思想</h3></div>
+  <div class="people-grid">
+
+    <div class="person-card">
+      <div class="person-avatar">⚡</div>
+      <div class="person-name">Nikola Tesla</div>
+      <div class="person-field">发明家 · 物理学家</div>
+      <div class="person-desc">交流电之父，拥有超过300项专利。历史学家认为他表现出显著的 ADHD 特质：超专注到忘记吃饭睡觉、思维跳跃但极具创造力、对声音和光线极度敏感。</div>
+      <div class="person-quote">我不知道世界会怎样记住我，但我希望是以发明家的身份。</div>
+      <span class="person-tag tag-reported">· 历史分析</span>
+    </div>
+
+    <div class="person-card">
+      <div class="person-avatar">💡</div>
+      <div class="person-name">Thomas Edison</div>
+      <div class="person-field">发明家 · 通用电气创始人</div>
+      <div class="person-desc">有史以来最高产的发明家之一，拥有超过1000项专利。老师曾说他「太笨了学不会」，但他的发散思维和永不满足的好奇心正是 ADHD 特质的表现。</div>
+      <div class="person-quote">我没有失败，我只是找到了一万种行不通的方法。</div>
+      <span class="person-tag tag-reported">· 历史分析</span>
+    </div>
+
+    <div class="person-card">
+      <div class="person-avatar">🎨</div>
+      <div class="person-name">Leonardo da Vinci</div>
+      <div class="person-field">艺术家 · 科学家 · 发明家</div>
+      <div class="person-desc">文艺复兴时期的天才，留下大量未完成的作品——有研究发现他「开始太多项目却很少完成」的模式高度符合 ADHD 特征。他的思维跳跃和多领域探索恰恰塑造了他的伟大。</div>
+      <span class="person-tag tag-reported">· 学术研究</span>
+    </div>
+
+  </div>
+
+  <!-- ══════ 文末 ══════ -->
+  <div class="intro-box" style="margin-top: 36px;">
+    <p style="font-size: 18px; font-weight: 600; color: var(--blue-dark); margin-bottom: 8px;">🌟 你也是 ADHDer 中的一员</p>
+    <p>
+    这份名单上的每一个人，都曾因为自己的「不一样」而挣扎过。<br>
+    但正是这份不一样，让他们在各自的领域闪闪发光。<br><br>
+    <strong>你的大脑不是限制——它是你的超能力。</strong>
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  用 💜 构建 · <a href="https://github.com/Aprilssky/adhd" target="_blank">GitHub</a>
+</footer>
+
+</body>
+</html>
